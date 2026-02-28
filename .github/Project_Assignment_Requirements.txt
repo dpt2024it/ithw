@@ -1,0 +1,104 @@
+
+This project assignment is for development of end-to-end apps with JavaScript, HTML, CSS, Bootstrap, Vite and Supabase.
+
+------------------------------------------------
+
+1. Project Assignment
+
+Using AI-assisted development implement and deploy a fully functional multi-page JS app.
+
+1.1 The topic and scope of your project is up to you.
+
+1.2 Examples: blog system, social network, listings website, hotel booking platform, issue tracking system, poll system, meme generator.
+
+------------------------------------------------
+
+2. Project Requirements :
+
+2.1 Technologies
+    • Frontend: Implement your app in HTML, CSS, JavaScript, Vite and Bootstrap. Use UI libraries and components of your choice. Keep it simple, without TypeScript and UI frameworks like React and Vue.
+    • Backend: Use Supabase as a backend (database, authentication and storage).
+
+2.2 Architecture
+    • Use Node.js, npm and Vite to structure your app with modular components.
+    • Use multi-page navigation (instead of single page with popups) and keep each page in separate file.
+    • Use modular design: split your app into self-contained components (e.g. UI pages, services, utils) to improve project maintenance.
+      When reasonable, use separate files for the UI, business logic, styles, and other app assets.
+      Avoid big and complex monolith code.
+    • Define project-wide "Agent Instructions" by creating the file .github/copilot-instructions.md in your repo (this is a mandatory requirement; create it if it does not already exist in the template) to provide architectural guidelines and project-wide instructions for the AI dev agent.
+         The example content below provides the minimum required guidelines. You are encouraged to extend it with project-specific instructions:
+         
+         Example content of .github/copilot-instructions.md (minimum required):
+             # Agent Instructions
+             - Use modular design: split your app into self-contained components (e.g. UI pages, services, utils) to improve project maintenance.
+             - When reasonable, use separate files for the UI, business logic, styles, and other app assets.
+             - Avoid big and complex monolith code.
+             - Use clear and consistent naming conventions for files, functions, variables, etc.
+             - Write clean and readable code with comments where necessary.
+             - Follow best practices for security, performance and accessibility in web development.
+         
+         You may extend the above with additional project-specific instructions, such as:
+         - Naming conventions for your specific domain or entity types
+         - Technology stack preferences and version constraints
+         - API interaction patterns and data validation rules
+         - UI component library standards or custom component guidelines
+         - Testing and code quality requirements
+
+2.3 User Interface (UI)
+    • Implement minimum 5 app screens (pages / popups / others).
+    • Example: register, login, main page, view / add / edit / delete entity, admin panel.
+    • Keep different app screens in separate files (for higher maintenance).
+    • Implement responsive design for desktop and mobile browsers.
+
+2.4 Backend
+    • Use Supabase as a backend to keep all your app data.
+    • Use Supabase DB for data tables.
+    • Use Supabase Auth for authentication (users, register, login, logout).
+    • Use Supabase Storage to upload photos and files at the server-side.
+    • Optionally, use Supabase Edge Functions for special server-side interactions.
+
+2.5 Authentication
+    • Use Supabase Auth for authentication.
+    • Implement users (register, login, logout) and roles (normal and admin users).
+    • Implement admin panel (or similar concept for special users, different from regular).
+        • Admin users should have access to special features, for example to view all users, delete users, etc.
+
+2.6 Database
+    • Your database should hold minimum 4 DB tables (with relationships when needed).
+    • Example (blog): users, profiles, articles, photos. Example (social network): users, posts, photos, comments.
+    • Keep the database schema as DB migrations scripts in a local folder, for example in a `supabase/migrations/` directory in the project root.
+      Name your migration files using a mandatory timestamp prefix in the format `YYYYMMDDHHMMSS_description.sql` (e.g. `20240228120000_init.sql`, `20240228121000_add_profiles.sql`).
+      The timestamp ensures that migrations are applied in the correct order, so keep the files in strictly increasing timestamp order (lexicographically sorted by filename).
+      Example folder structure:
+          - `supabase/`
+            - `migrations/` (SQL migration files, e.g. `20240228120000_init.sql`, `20240228121000_add_profiles.sql`)
+            - `functions/` (Edge Functions, e.g. `send_welcome_email.js`)
+            - `storage/` (files for Supabase Storage, e.g. `profile_pictures/`, `product_photos/`)
+
+2.7 Storage
+    • Your app should store user files (like photos and documents) in Supabase Storage.
+    • Your project should use file upload and download somewhere, e.g. profile pictures or product photos.
+
+2.8 Deployment
+    • Your project should be deployed live on the Internet (e.g. in Netlify, Vercel or similar platform).
+    • Provide sample credentials (e.g. demo / demo123) to simplify testing your app.
+
+2.9 GitHub Repo
+    Your public GitHub repo is the most important project asset for your capstone project.
+    The commit history in your repo demonstrates that you have worked seriously to develop your app yourself,
+    and you have spent several days working on it.
+    Without a solid history of commits in GitHub you cannot demonstrate
+    that your project is your own work (not taken from someone else).
+    • Create minimum 15 commits in GitHub.
+    • Create your commits on at least 3 different days.
+    • Optionally, you can create branches and merge them with pull requests.
+        • Use meaningful commit messages that describe the changes you made in each commit.
+
+2.10 Documentation
+    • Generate a project documentation in your GitHub repository.
+    • Project description: describe briefly your project (what it does, who can do what, etc.).
+    • Architecture: front-end, back-end, technologies used, database, etc.
+    • Local development setup guide.
+    • Key folders and files and their purpose.
+
+------------------------------------------------

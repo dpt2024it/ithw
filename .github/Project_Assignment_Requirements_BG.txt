@@ -1,0 +1,62 @@
+Това проектно задание е за разработка на end-to-end приложения с JavaScript, HTML, CSS, Bootstrap, Vite и Supabase.
+------------------------------------------------
+1. Проектно задание
+Използвайки AI-assisted development, реализирайте и deploy-нете напълно функционално multi-page JS приложение.
+1.1 Темата и обхватът на проекта са по ваш избор.
+1.2 Примери: blog system, social network, listings website, hotel booking platform, issue tracking system, poll system, meme generator.
+
+------------------------------------------------
+
+2. Изисквания към проекта:
+
+Технологии
+    • Frontend: Реализирайте приложението си с HTML, CSS, JavaScript, Vite и Bootstrap. Използвайте UI libraries и components по ваш избор. Дръжте решението опростено, без TypeScript и UI frameworks като React и Vue.
+    • Backend: Използвайте Supabase като backend (database, authentication и storage).
+Архитектура
+    • Използвайте Node.js, npm и Vite, за да структурирате приложението си с modular components.
+    • Използвайте multi-page navigation (вместо single page с popups) и пазете всяка страница в отделен file.
+    • Използвайте modular design: разделете приложението си на self-contained components (напр. UI pages, services, utils), за да подобрите поддръжката на проекта.
+      Когато е уместно, използвайте отделни files за UI, business logic, styles и други app assets.
+      Избягвайте голям и сложен monolith code.
+    • Дефинирайте "Agent Instructions" (.github/copilot-instructions.md), за да предоставите architectural guidelines и project-wide instructions за AI dev agent.
+Потребителски интерфейс (UI)
+    • Реализирайте минимум 5 app screens (pages / popups / други).
+    • Пример: register, login, main page, view / add / edit / delete entity, admin panel.
+    • Пазете различните app screens в отделни files (за по-добра поддръжка).
+    • Реализирайте responsive design за desktop и mobile browsers.
+Backend
+    • Използвайте Supabase като backend, за да съхранявате всички app data.
+    • Използвайте Supabase DB за data tables.
+    • Използвайте Supabase Auth за authentication (users, register, login, logout).
+    • Използвайте Supabase Storage за upload на снимки и files от server-side.
+    • По желание използвайте Supabase Edge Functions за специални server-side interactions.
+Authentication
+    • Използвайте Supabase Auth за authentication.
+    • Реализирайте users (register, login, logout) и roles (normal и admin users).
+    • Реализирайте admin panel (или подобна концепция за специални users, различни от regular).
+Database
+    • Вашата database трябва да съдържа минимум 4 DB tables (с relationships при нужда).
+    • Пример (blog): users, profiles, articles, photos. Пример (social network): users, posts, photos, comments.
+    • Пазете database schema като DB migrations scripts в локална папка.
+Storage
+    • Приложението ви трябва да съхранява user files (като снимки и документи) в Supabase Storage.
+    • Проектът ви трябва да използва file upload и download някъде, напр. profile pictures или product photos.
+Deployment
+    • Проектът ви трябва да бъде deploy-нат live в Internet (напр. в Netlify, Vercel или подобна платформа).
+    • Осигурете sample credentials (напр. demo / demo123), за да се улесни тестването на приложението.
+GitHub Repo
+Вашият public GitHub repo е най-важният project asset за вашия capstone project.
+Commit history в repo-то ви показва, че сте работили сериозно по разработката на приложението сами
+и сте отделили няколко дни работа по него.
+Без стабилна история от commits в GitHub не можете да демонстрирате, че проектът е ваша собствена работа (а не взет от другаде).
+    • Направете минимум 15 commits в GitHub.
+    • Създайте commits в поне 3 различни дни.
+    • По желание можете да създавате branches и да ги merge-вате с pull requests.
+Документация
+    • Генерирайте project documentation във вашия GitHub repository.
+    • Project description: опишете накратко проекта си (какво прави, кой какво може да прави и т.н.).
+    • Architecture: front-end, back-end, използвани технологии, database и др.
+    • Local development setup guide.
+    • Основни папки и files и тяхното предназначение.
+
+------------------------------------------------
