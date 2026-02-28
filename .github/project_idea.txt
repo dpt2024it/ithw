@@ -12,3 +12,9 @@
 5-Към всяка задача има нещо като канал в който всеки може да влиза и да търси помощ за решаването на тази задача - нещо като 
     форум (например за задача 5 Гошко има въпрос и може да отвори в канала за задача 5 дискусия и после другите му отговарят в тази дискусия. 
     Обаче след малко Станка има съвсем различен въпрос към същата задача 5 и тя също отваря нова дискусия)
+
+-- Fix: set search_path on handle_new_user
+ALTER FUNCTION public.handle_new_user() SET search_path = '';
+
+-- Fix: set search_path on update_updated_at
+ALTER FUNCTION public.update_updated_at() SET search_path = '';
