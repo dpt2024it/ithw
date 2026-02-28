@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin панел — IT Homework</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="bg-light">
+  <div id="navbar"></div>
+
+  <div class="container py-4">
+    <h2 class="mb-4"><i class="bi bi-gear me-2"></i>Admin панел</h2>
+
+    <div id="alert-container"></div>
+    <div id="access-denied" class="d-none">
+      <div class="alert alert-danger">Нямаш достъп до тази страница.</div>
+    </div>
+
+    <div id="admin-content" class="d-none">
+      <!-- Tabs -->
+      <ul class="nav nav-tabs mb-4" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" data-bs-toggle="tab"
+                  data-bs-target="#tab-new-assignment" type="button" role="tab">
+            <i class="bi bi-plus-circle me-1"></i>Нова задача
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab"
+                  data-bs-target="#tab-manage-assignments" type="button" role="tab">
+            <i class="bi bi-list-ul me-1"></i>Управление на задачи
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab"
+                  data-bs-target="#tab-users" type="button" role="tab">
+            <i class="bi bi-people me-1"></i>Потребители
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <!-- New Assignment -->
+        <div class="tab-pane fade show active" id="tab-new-assignment" role="tabpanel">
+          <div class="card">
+            <div class="card-body">
+              <h5>Създай нова задача</h5>
+              <form id="assignment-form">
+                <div class="mb-3">
+                  <label for="assign-title" class="form-label">Заглавие</label>
+                  <input type="text" class="form-control" id="assign-title" required
+                         placeholder="Задача 1: Основи на HTML">
+                </div>
+                <div class="mb-3">
+                  <label for="assign-desc" class="form-label">Описание</label>
+                  <textarea class="form-control" id="assign-desc" rows="6" required
+                            placeholder="Опишете задачата подробно..."></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="assign-due" class="form-label">Краен срок (по избор)</label>
+                  <input type="datetime-local" class="form-control" id="assign-due">
+                </div>
+                <button type="submit" class="btn btn-success">
+                  <i class="bi bi-check-lg me-1"></i>Публикувай
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manage Assignments -->
+        <div class="tab-pane fade" id="tab-manage-assignments" role="tabpanel">
+          <div id="manage-loading" class="loading-container">
+            <div class="spinner-border text-primary" role="status"></div>
+          </div>
+          <div id="assignments-table-container" class="d-none">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Заглавие</th>
+                  <th>Дата</th>
+                  <th>Краен срок</th>
+                  <th>Действия</th>
+                </tr>
+              </thead>
+              <tbody id="assignments-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Users -->
+        <div class="tab-pane fade" id="tab-users" role="tabpanel">
+          <div id="users-loading" class="loading-container">
+            <div class="spinner-border text-primary" role="status"></div>
+          </div>
+          <div id="users-table-container" class="d-none">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Име</th>
+                  <th>Роля</th>
+                  <th>Регистриран</th>
+                </tr>
+              </thead>
+              <tbody id="users-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/admin.js"></script>
+</body>
+
+</html>

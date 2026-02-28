@@ -1,33 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Homework Assignments - Overview</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Homework Platform</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
-    <h1>IT_HomeWork - Homework Assignments and Resources</h1>
-    <p>Welcome to the IT_HomeWork project! This is a placeholder for your homework assignments and related materials.
-        You can add your tasks, notes, and resources here to keep everything organized.</p>
-    <h2>Homework Assignments</h2>
-    <ul>
-        <li>Assignment 1: Introduction to Programming</li>
-        <li>Assignment 2: Data Structures and Algorithms</li>
-        <li>Assignment 3: Web Development Basics</li>
-        <li>Assignment 4: Database Management</li>
-        <li>Assignment 5: Software Development Lifecycle</li>
-    </ul>
-    <h2>Resources</h2>
-    <ul>
-        <li><a href="https://www.w3schools.com/">W3Schools - Web Development Tutorials</a></li>
-        <li><a href="https://www.geeksforgeeks.org/">GeeksforGeeks - Programming and Data Structures</a></li>
-        <li><a href="https://www.codecademy.com/">Codecademy - Interactive Coding Lessons</a></li>
-        <li><a href="https://www.stackoverflow.com/">Stack Overflow - Programming Q&A</a></li>
-        <li><a href="https://www.github.com/">GitHub - Code Hosting Platform</a></li>
-    </ul>
+  <!-- Navbar -->
+  <div id="navbar"></div>
 
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container text-center">
+      <h1><i class="bi bi-code-slash me-3"></i>IT Homework Platform</h1>
+      <p class="lead mt-3 mb-4">
+        Платформа за домашни работи по програмиране.<br>
+        Решавай задачи, споделяй решения, помагай на другите.
+      </p>
+      <div class="d-flex gap-3 justify-content-center">
+        <a href="/src/pages/login.html" class="btn btn-primary btn-lg">
+          <i class="bi bi-box-arrow-in-right me-2"></i>Вход
+        </a>
+        <a href="/src/pages/register.html" class="btn btn-outline-light btn-lg">
+          <i class="bi bi-person-plus me-2"></i>Регистрация
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Как работи?</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card card-hover h-100 text-center p-4">
+            <div class="card-body">
+              <i class="bi bi-journal-plus display-4 text-primary mb-3"></i>
+              <h5 class="card-title">Учителят публикува задачи</h5>
+              <p class="card-text text-muted">
+                Учителят създава задачи за домашно с описание и краен срок.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-hover h-100 text-center p-4">
+            <div class="card-body">
+              <i class="bi bi-code-square display-4 text-success mb-3"></i>
+              <h5 class="card-title">Учениците решават</h5>
+              <p class="card-text text-muted">
+                Всеки ученик качва своето решение — код или файл.
+                Всички виждат решенията на другите.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-hover h-100 text-center p-4">
+            <div class="card-body">
+              <i class="bi bi-chat-dots display-4 text-warning mb-3"></i>
+              <h5 class="card-title">Коментари и дискусии</h5>
+              <p class="card-text text-muted">
+                Коментирай решенията, задавай въпроси и помагай на съучениците си.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-white text-center py-3 mt-auto">
+    <div class="container">
+      <small>&copy; 2026 IT Homework Platform</small>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/index.js"></script>
 </body>
 
 </html>

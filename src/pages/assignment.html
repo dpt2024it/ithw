@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Задача — IT Homework</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="bg-light">
+  <div id="navbar"></div>
+
+  <div class="container py-4">
+    <!-- Back button -->
+    <a href="/src/pages/assignments.html" class="btn btn-outline-secondary btn-sm mb-3">
+      <i class="bi bi-arrow-left me-1"></i>Назад към задачите
+    </a>
+
+    <!-- Loading -->
+    <div id="loading" class="loading-container">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Зареждане...</span>
+      </div>
+    </div>
+
+    <div id="content" class="d-none">
+      <!-- Assignment details -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 id="assignment-title"></h2>
+          <div class="d-flex gap-3 text-muted mb-3">
+            <small><i class="bi bi-person me-1"></i><span id="assignment-author"></span></small>
+            <small><i class="bi bi-calendar me-1"></i><span id="assignment-date"></span></small>
+            <small id="assignment-due" class="text-danger d-none">
+              <i class="bi bi-alarm me-1"></i>Краен срок: <span id="due-date"></span>
+            </small>
+          </div>
+          <div id="assignment-description" class="mb-0"></div>
+        </div>
+      </div>
+
+      <!-- Tabs: Solutions | Discussions -->
+      <ul class="nav nav-tabs mb-3" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="tab-solutions" data-bs-toggle="tab"
+                  data-bs-target="#panel-solutions" type="button" role="tab">
+            <i class="bi bi-code-square me-1"></i>Решения
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tab-discussions" data-bs-toggle="tab"
+                  data-bs-target="#panel-discussions" type="button" role="tab">
+            <i class="bi bi-chat-left-text me-1"></i>Дискусии
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <!-- Solutions panel -->
+        <div class="tab-pane fade show active" id="panel-solutions" role="tabpanel">
+          <!-- Submit solution form -->
+          <div class="card mb-3" id="submit-solution-card">
+            <div class="card-body">
+              <h5><i class="bi bi-plus-circle me-2"></i>Моето решение</h5>
+              <form id="solution-form">
+                <div class="mb-3">
+                  <label for="solution-code" class="form-label">Код</label>
+                  <textarea class="form-control font-monospace" id="solution-code" rows="8"
+                            placeholder="Постави кода си тук..."></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="solution-file" class="form-label">Прикачи файл (по избор)</label>
+                  <input type="file" class="form-control" id="solution-file">
+                </div>
+                <div class="mb-3">
+                  <label for="solution-notes" class="form-label">Бележки (по избор)</label>
+                  <input type="text" class="form-control" id="solution-notes"
+                         placeholder="Кратко описание на подхода">
+                </div>
+                <button type="submit" class="btn btn-success">
+                  <i class="bi bi-send me-1"></i>Изпрати решение
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Solutions list -->
+          <div id="solutions-list"></div>
+        </div>
+
+        <!-- Discussions panel -->
+        <div class="tab-pane fade" id="panel-discussions" role="tabpanel">
+          <!-- New discussion form -->
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5><i class="bi bi-chat-dots me-2"></i>Нова дискусия</h5>
+              <form id="discussion-form">
+                <div class="mb-3">
+                  <label for="disc-title" class="form-label">Заглавие</label>
+                  <input type="text" class="form-control" id="disc-title" required
+                         placeholder="За какво е въпросът ти?">
+                </div>
+                <div class="mb-3">
+                  <label for="disc-body" class="form-label">Описание</label>
+                  <textarea class="form-control" id="disc-body" rows="3"
+                            placeholder="Опиши проблема подробно..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-send me-1"></i>Публикувай
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Discussions list -->
+          <div id="discussions-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/assignment.js"></script>
+</body>
+
+</html>
