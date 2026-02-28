@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Профил — IT Homework</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/src/css/profile.css">
 </head>
 
 <body class="bg-light">
@@ -25,8 +26,7 @@
             <div class="text-center mb-4">
               <img id="avatar-preview" src="" alt="Аватар"
                    class="avatar-md mb-2 d-none">
-              <div id="avatar-placeholder" class="mx-auto mb-2"
-                   style="width:64px;height:64px;border-radius:50%;background:#dee2e6;display:flex;align-items:center;justify-content:center">
+              <div id="avatar-placeholder" class="mx-auto mb-2 avatar-placeholder">
                 <i class="bi bi-person display-6 text-muted"></i>
               </div>
             </div>
@@ -41,12 +41,16 @@
                 <input type="file" class="form-control" id="avatar" accept="image/*">
               </div>
               <div class="mb-3">
-                <label class="form-label">Email</label>
+                <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" disabled>
               </div>
               <div class="mb-3">
-                <label class="form-label">Роля</label>
+                <label for="role" class="form-label">Роля</label>
                 <input type="text" class="form-control" id="role" disabled>
+              </div>
+              <div class="mb-3">
+                <label for="username">Потребителско име</label>
+                <input type="text" id="username" name="username" class="form-control">
               </div>
               <button type="submit" class="btn btn-primary w-100" id="btn-save">
                 <i class="bi bi-check-lg me-1"></i>Запази промените
