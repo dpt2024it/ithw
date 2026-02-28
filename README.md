@@ -5,10 +5,12 @@
 ## Функционалности
 
 ### Роли
+
 - **Учител (admin)** — създава, редактира и изтрива задачи; вижда всички потребители
 - **Ученик (user)** — решава задачи, качва файлове, коментира, участва в дискусии
 
 ### Основни възможности
+
 - Регистрация и вход (Supabase Auth)
 - Списък задачи за домашно с описание и краен срок
 - Качване на решения (код + файл)
@@ -22,7 +24,7 @@
 ## Технологии
 
 | Компонент | Технология |
-|-----------|-----------|
+| --- | --- |
 | Frontend | HTML, CSS, JavaScript (ES modules) |
 | CSS Framework | Bootstrap 5 |
 | Build Tool | Vite |
@@ -32,6 +34,7 @@
 ## Архитектура
 
 Проектът следва **модулен дизайн** с разделение на:
+
 - **Страници** (`src/pages/`) — отделен HTML файл за всяка страница
 - **Логика** (`src/js/`) — отделен JS модул за всяка страница
 - **Услуги** (`src/services/`) — Supabase client и API функции
@@ -40,6 +43,7 @@
 - **Миграции** (`supabase/migrations/`) — SQL schema файлове
 
 ### Database Schema (6 таблици)
+
 - `profiles` — потребителски профили (име, роля, аватар)
 - `assignments` — задачи за домашно
 - `solutions` — решения на учениците
@@ -101,6 +105,7 @@ ithw/
 ## Local Development Setup
 
 ### Предварителни изисквания
+
 - [Node.js](https://nodejs.org/) (v18+)
 - npm (идва с Node.js)
 - Supabase акаунт — [supabase.com](https://supabase.com)
@@ -139,7 +144,7 @@ ithw/
    `ash
    npm run dev
    `
-   Отвори http://localhost:5173 в браузъра.
+   Отвори <http://localhost:5173> в браузъра.
 
 6. **Build за продукция**
    `ash
@@ -150,14 +155,14 @@ ithw/
 ## Тестови акаунти
 
 | Роля | Email | Парола |
-|------|-------|--------|
-| Учител (admin) | admin@demo.com | demo123 |
-| Ученик (user) | student@demo.com | demo123 |
+| --- | --- | --- |
+| Учител (admin) | `admin@demo.com` | demo123 |
+| Ученик (user) | `student@demo.com` | demo123 |
 
 ## npm Scripts
 
 | Команда | Описание |
-|---------|----------|
+| --- | --- |
 | `npm run dev` | Стартира Vite dev server |
 | `npm run build` | Build за продукция в `dist/` |
 | `npm run preview` | Преглед на production build |
