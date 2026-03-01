@@ -3,7 +3,7 @@ import { renderNavbar } from '/src/js/navbar.js';
 import { getCurrentProfile } from '/src/services/auth.js';
 import { getAssignments, createAssignment, deleteAssignment } from '/src/services/assignments.js';
 import { supabase } from '/src/services/supabase.js';
-import { escapeHtml, showAlert } from '/src/utils/helpers.js';
+import { escapeHtml, formatDate, showAlert } from '/src/utils/helpers.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   await renderNavbar();
@@ -71,8 +71,8 @@ async function loadAssignmentsTable() {
       <td>
         <a href="/src/pages/assignment.html?id=${a.id}">${escapeHtml(a.title)}</a>
       </td>
-      <td>${new Date(a.created_at).toLocaleDateString('bg-BG')}</td>
-      <td>${a.due_date ? new Date(a.due_date).toLocaleDateString('bg-BG') : '—'}</td>
+      <td>${formatDate(a.created_at)}</td>
+      <td>${a.due_date ? formatDate(a.due_date) : '—'}</td>
       <td>
         <button class="btn btn-sm btn-outline-danger btn-delete-assignment" data-id="${a.id}">
           <i class="bi bi-trash"></i>
@@ -125,7 +125,7 @@ async function loadUsersTable() {
           ${u.role === 'admin' ? 'Учител' : 'Ученик'}
         </span>
       </td>
-      <td>${new Date(u.created_at).toLocaleDateString('bg-BG')}</td>
+      <td>${formatDate(u.created_at)}</td>
     </tr>
   `).join('');
 }

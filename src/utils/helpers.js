@@ -13,18 +13,23 @@ export function escapeHtml(text) {
 
 /**
  * Форматира дата на български
+ * Формат: "нд 01 март 2026 г. 17:14:37"
  * @param {string} dateStr
  * @returns {string}
  */
 export function formatDate(dateStr) {
   if (!dateStr) return '';
-  return new Date(dateStr).toLocaleDateString('bg-BG', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  const d = new Date(dateStr);
+  const days = ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+  const months = ['ян', 'фев', 'март', 'ап', 'май', 'юни', 'юли', 'авг', 'сеп', 'окт', 'ноем', 'дек'];
+  const dayOfWeek = days[d.getDay()];
+  const date = String(d.getDate()).padStart(2, '0');
+  const month = months[d.getMonth()];
+  const year = d.getFullYear();
+  const hours = String(d.getHours()).padStart(2, '0');
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  const seconds = String(d.getSeconds()).padStart(2, '0');
+  return `${dayOfWeek} ${date} ${month} ${year} г. ${hours}:${minutes}:${seconds}`;
 }
 
 /**
