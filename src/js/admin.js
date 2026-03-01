@@ -117,7 +117,7 @@ async function loadUsersTable() {
   tbody.innerHTML = users.map((u) => `
     <tr>
       <td>
-        ${u.avatar_url ? `<img src="${u.avatar_url}" class="avatar-sm me-2">` : ''}
+        ${u.avatar_url ? `<img src="${u.avatar_url}" alt="Аватар на ${escapeHtml(u.full_name || 'потребител')}" class="avatar-sm me-2">` : ''}
         ${escapeHtml(u.full_name || 'Без име')}
       </td>
       <td>
