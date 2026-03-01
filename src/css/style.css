@@ -99,3 +99,16 @@ footer {
   background-color: #1a1a2e;
 }
 
+/* Focus-visible styles for keyboard navigation (accessibility) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline: 3px solid #ffc107;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
