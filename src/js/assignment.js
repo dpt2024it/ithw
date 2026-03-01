@@ -126,31 +126,61 @@ async function loadSolutions(assignmentId, profile) {
     document.getElementById('submit-solution-card').classList.add('d-none');
   }
 
-  container.innerHTML = solutions.map((s) => `
-    <div class="card mb-3">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <div>
-          <i class="bi bi-person-circle me-1"></i>
-          <strong>${escapeHtml(s.profiles?.full_name || 'Ученик')}</strong>
-        </div>
-        <small class="text-muted">${new Date(s.created_at).toLocaleDateString('bg-BG')}</small>
-      </div>
-      <div class="card-body">
+  const isOwn = (s) => s.author_id === profile.id;
+
+  container.innerHTML = solutions.map((s) => {
+    const own = isOwn(s);
+    const bodyContent = `
         ${s.code ? `<pre class="code-block">${escapeHtml(s.code)}</pre>` : ''}
         ${s.notes ? `<p class="text-muted"><em>${escapeHtml(s.notes)}</em></p>` : ''}
         ${s.file_url ? `
           <a href="${s.file_url}" target="_blank" class="btn btn-sm btn-outline-primary">
             <i class="bi bi-download me-1"></i>Прикачен файл
           </a>
-        ` : ''}
+        ` : ''}`;
+
+    return `
+    <div class="card mb-3">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+          <i class="bi bi-person-circle me-1"></i>
+          <strong>${escapeHtml(s.profiles?.full_name || 'Ученик')}</strong>
+          ${own ? '<span class="badge bg-primary ms-2">Моето</span>' : ''}
+        </div>
+        <small class="text-muted">${new Date(s.created_at).toLocaleDateString('bg-BG')}</small>
       </div>
+      ${own
+        ? `<div class="card-body">${bodyContent}</div>`
+        : `<div class="card-body">
+            <button class="btn btn-outline-primary btn-sm toggle-solution-btn"
+                    type="button" data-solution-id="${s.id}">
+              <i class="bi bi-eye me-1"></i>Виж решението
+            </button>
+            <div class="solution-content mt-3 d-none" id="solution-body-${s.id}">
+              ${bodyContent}
+            </div>
+          </div>`
+      }
       <div class="card-footer">
         <a href="/src/pages/solution.html?id=${s.id}" class="btn btn-sm btn-outline-secondary">
           <i class="bi bi-chat-dots me-1"></i>Коментари
         </a>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
+
+  // Добавяме toggle логика за бутоните „Виж решението"
+  container.querySelectorAll('.toggle-solution-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.solutionId;
+      const body = document.getElementById(`solution-body-${id}`);
+      const isHidden = body.classList.contains('d-none');
+      body.classList.toggle('d-none');
+      btn.innerHTML = isHidden
+        ? '<i class="bi bi-eye-slash me-1"></i>Скрий решението'
+        : '<i class="bi bi-eye me-1"></i>Виж решението';
+    });
+  });
 }
 
 /** Зарежда и рендерира дискусиите */
