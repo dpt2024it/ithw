@@ -2,7 +2,7 @@
 import { renderNavbar } from '/src/js/navbar.js';
 import { getCurrentProfile } from '/src/services/auth.js';
 import { getAssignments } from '/src/services/assignments.js';
-import { escapeHtml } from '/src/utils/helpers.js';
+import { escapeHtml, formatDate } from '/src/utils/helpers.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   await renderNavbar();
@@ -60,13 +60,13 @@ document.addEventListener('DOMContentLoaded', async () => {
               <i class="bi bi-person me-1"></i>${escapeHtml(a.profiles?.full_name || 'Учител')}
             </small>
             <small class="text-muted">
-              <i class="bi bi-calendar me-1"></i>${new Date(a.created_at).toLocaleDateString('bg-BG')}
+              <i class="bi bi-calendar me-1"></i>${formatDate(a.created_at)}
             </small>
           </div>
           ${a.due_date ? `
             <div class="card-footer bg-transparent">
               <small class="text-danger">
-                <i class="bi bi-alarm me-1"></i>Краен срок: ${new Date(a.due_date).toLocaleDateString('bg-BG')}
+                <i class="bi bi-alarm me-1"></i>Краен срок: ${formatDate(a.due_date)}
               </small>
             </div>
           ` : ''}

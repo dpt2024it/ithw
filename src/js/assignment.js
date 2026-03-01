@@ -4,7 +4,7 @@ import { getCurrentProfile } from '/src/services/auth.js';
 import { getAssignment } from '/src/services/assignments.js';
 import { getSolutionsByAssignment, createSolution, uploadSolutionFile } from '/src/services/solutions.js';
 import { getDiscussionsByAssignment, createDiscussion } from '/src/services/discussions.js';
-import { escapeHtml } from '/src/utils/helpers.js';
+import { escapeHtml, formatDate } from '/src/utils/helpers.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   await renderNavbar();
@@ -38,12 +38,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Попълваме данните за задачата
   document.getElementById('assignment-title').textContent = assignment.title;
   document.getElementById('assignment-author').textContent = assignment.profiles?.full_name || 'Учител';
-  document.getElementById('assignment-date').textContent = new Date(assignment.created_at).toLocaleDateString('bg-BG');
+  document.getElementById('assignment-date').textContent = formatDate(assignment.created_at);
   document.getElementById('assignment-description').innerHTML = escapeHtml(assignment.description).replace(/\n/g, '<br>');
 
   if (assignment.due_date) {
     document.getElementById('assignment-due').classList.remove('d-none');
-    document.getElementById('due-date').textContent = new Date(assignment.due_date).toLocaleDateString('bg-BG');
+    document.getElementById('due-date').textContent = formatDate(assignment.due_date);
   }
 
   content.classList.remove('d-none');
@@ -147,7 +147,7 @@ async function loadSolutions(assignmentId, profile) {
           <strong>${escapeHtml(s.profiles?.full_name || 'Ученик')}</strong>
           ${own ? '<span class="badge bg-primary ms-2">Моето</span>' : ''}
         </div>
-        <small class="text-muted">${new Date(s.created_at).toLocaleDateString('bg-BG')}</small>
+        <small class="text-muted">${formatDate(s.created_at)}</small>
       </div>
       ${own
         ? `<div class="card-body">${bodyContent}</div>`
@@ -203,7 +203,7 @@ async function loadDiscussions(assignmentId) {
           <i class="bi bi-person me-1"></i>${escapeHtml(d.profiles?.full_name || 'Потребител')}
         </small>
         <small class="text-muted">
-          <i class="bi bi-calendar me-1"></i>${new Date(d.created_at).toLocaleDateString('bg-BG')}
+          <i class="bi bi-calendar me-1"></i>${formatDate(d.created_at)}
         </small>
       </div>
     </div>
