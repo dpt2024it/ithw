@@ -45,6 +45,8 @@ export function getParam(name) {
 export function showAlert(containerId, message, type = 'danger') {
   const container = document.getElementById(containerId);
   if (container) {
+    container.setAttribute('role', 'alert');
+    container.setAttribute('aria-live', 'polite');
     container.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
   }
 }
