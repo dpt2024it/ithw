@@ -52,7 +52,9 @@
         <div class="card-body">
           <form id="comment-form">
             <div class="mb-2">
+              <label for="comment-body" class="form-label visually-hidden">Напиши коментар</label>
               <textarea class="form-control" id="comment-body" rows="3" required
+                        aria-required="true"
                         placeholder="Напиши коментар..."></textarea>
             </div>
             <input type="hidden" id="comment-parent-id" value="">
