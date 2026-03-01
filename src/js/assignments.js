@@ -2,6 +2,7 @@
 import { renderNavbar } from '/src/js/navbar.js';
 import { getCurrentProfile } from '/src/services/auth.js';
 import { getAssignments } from '/src/services/assignments.js';
+import { escapeHtml } from '/src/utils/helpers.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   await renderNavbar();
@@ -74,10 +75,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     </div>
   `).join('');
 });
-
-/** Escape HTML за предотвратяване на XSS */
-function escapeHtml(text) {
-  const div = document.createElement('div');
-  div.textContent = text || '';
-  return div.innerHTML;
-}
