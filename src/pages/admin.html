@@ -25,19 +25,19 @@
       <!-- Tabs -->
       <ul class="nav nav-tabs mb-4" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" data-bs-toggle="tab"
+          <button class="nav-link active" id="tab-btn-new" data-bs-toggle="tab"
                   data-bs-target="#tab-new-assignment" type="button" role="tab">
             <i class="bi bi-plus-circle me-1"></i>Нова задача
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" data-bs-toggle="tab"
+          <button class="nav-link" id="tab-btn-manage" data-bs-toggle="tab"
                   data-bs-target="#tab-manage-assignments" type="button" role="tab">
             <i class="bi bi-list-ul me-1"></i>Управление на задачи
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" data-bs-toggle="tab"
+          <button class="nav-link" id="tab-btn-users" data-bs-toggle="tab"
                   data-bs-target="#tab-users" type="button" role="tab">
             <i class="bi bi-people me-1"></i>Потребители
           </button>
@@ -46,7 +46,7 @@
 
       <div class="tab-content">
         <!-- New Assignment -->
-        <div class="tab-pane fade show active" id="tab-new-assignment" role="tabpanel">
+        <div class="tab-pane fade show active" id="tab-new-assignment" role="tabpanel" aria-labelledby="tab-btn-new">
           <div class="card">
             <div class="card-body">
               <h5>Създайте нова задача</h5>
@@ -74,7 +74,7 @@
         </div>
 
         <!-- Manage Assignments -->
-        <div class="tab-pane fade" id="tab-manage-assignments" role="tabpanel">
+        <div class="tab-pane fade" id="tab-manage-assignments" role="tabpanel" aria-labelledby="tab-btn-manage">
           <div id="manage-loading" class="loading-container">
             <div class="spinner-border text-primary" role="status">
               <span class="visually-hidden">Зареждане на задачи...</span>
@@ -96,7 +96,7 @@
         </div>
 
         <!-- Users -->
-        <div class="tab-pane fade" id="tab-users" role="tabpanel">
+        <div class="tab-pane fade" id="tab-users" role="tabpanel" aria-labelledby="tab-btn-users">
           <div id="users-loading" class="loading-container">
             <div class="spinner-border text-primary" role="status">
               <span class="visually-hidden">Зареждане на потребители...</span>
