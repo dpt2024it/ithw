@@ -2,9 +2,8 @@
   command = "npm run build"
   publish = "dist"
 
-# SPA-like redirects for multi-page app
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["admin"]}
+# Environment variables (set in Netlify UI: VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY)
+
+# Multi-page app: no SPA catch-all redirect needed.
+# Each page (login, register, assignments, etc.) has its own HTML file.
+# Netlify serves them automatically from dist/src/pages/*.html
