@@ -3,7 +3,7 @@ import { renderNavbar } from '/src/js/navbar.js';
 import { getCurrentProfile } from '/src/services/auth.js';
 import { getSolution } from '/src/services/solutions.js';
 import { getCommentsBySolution, createComment, buildCommentTree } from '/src/services/comments.js';
-import { escapeHtml, formatDate, getParam } from '/src/utils/helpers.js';
+import { escapeHtml, formatDate, getParam, openFileUtf8 } from '/src/utils/helpers.js';
 
 let currentProfile = null;
 
@@ -57,10 +57,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (solution.file_url) {
     const fileEl = document.getElementById('solution-file');
     fileEl.innerHTML = `
-      <a href="${solution.file_url}" target="_blank" class="btn btn-sm btn-outline-primary">
+      <button type="button" class="btn btn-sm btn-outline-primary" id="open-file-btn">
         <i class="bi bi-download me-1"></i>Прикачен файл
-      </a>
+      </button>
     `;
+    fileEl.querySelector('#open-file-btn').addEventListener('click', () => {
+      openFileUtf8(solution.file_url);
+    });
     fileEl.classList.remove('d-none');
   }
 

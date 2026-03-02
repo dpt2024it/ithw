@@ -4,7 +4,7 @@ import { getCurrentProfile } from '/src/services/auth.js';
 import { getAssignment } from '/src/services/assignments.js';
 import { getSolutionsByAssignment, createSolution, uploadSolutionFile } from '/src/services/solutions.js';
 import { getDiscussionsByAssignment, createDiscussion } from '/src/services/discussions.js';
-import { escapeHtml, formatDate } from '/src/utils/helpers.js';
+import { escapeHtml, formatDate, openFileUtf8 } from '/src/utils/helpers.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   await renderNavbar();
@@ -134,9 +134,9 @@ async function loadSolutions(assignmentId, profile) {
         ${s.code ? `<pre class="code-block">${escapeHtml(s.code)}</pre>` : ''}
         ${s.notes ? `<p class="text-muted"><em>${escapeHtml(s.notes)}</em></p>` : ''}
         ${s.file_url ? `
-          <a href="${s.file_url}" target="_blank" class="btn btn-sm btn-outline-primary">
+          <button type="button" class="btn btn-sm btn-outline-primary open-file-btn" data-file-url="${s.file_url}">
             <i class="bi bi-download me-1"></i>Прикачен файл
-          </a>
+          </button>
         ` : ''}`;
 
     return `
@@ -179,6 +179,13 @@ async function loadSolutions(assignmentId, profile) {
       btn.innerHTML = isHidden
         ? '<i class="bi bi-eye-slash me-1"></i>Скрий решението'
         : '<i class="bi bi-eye me-1"></i>Виж решението';
+    });
+  });
+
+  // Отваряме прикачени файлове с правилен UTF-8 encoding
+  container.querySelectorAll('.open-file-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      openFileUtf8(btn.dataset.fileUrl);
     });
   });
 }

@@ -55,3 +55,46 @@ export function showAlert(containerId, message, type = 'danger') {
     container.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
   }
 }
+
+/**
+ * Отваря файл от URL с правилен UTF-8 encoding.
+ * Решава проблема с "маймуняци" (кирилица) при файлове в Supabase Storage,
+ * които са качени без charset=utf-8 в Content-Type хедъра.
+ * @param {string} url — публичен URL на файла
+ * @param {string} [filename] — име на файла (за определяне на MIME типа)
+ */
+export async function openFileUtf8(url, filename = '') {
+  const ext = (filename || url).split('.').pop().toLowerCase();
+
+  // Само за текстови файлове правим UTF-8 fetch; за останалите — директен линк
+  const textExtensions = {
+    html: 'text/html',
+    htm: 'text/html',
+    css: 'text/css',
+    js: 'text/javascript',
+    json: 'application/json',
+    txt: 'text/plain',
+    xml: 'text/xml',
+    svg: 'image/svg+xml',
+    md: 'text/markdown',
+  };
+
+  const mimeType = textExtensions[ext];
+  if (!mimeType) {
+    // Не е текстов файл — отваряме директно
+    window.open(url, '_blank');
+    return;
+  }
+
+  try {
+    const response = await fetch(url);
+    const arrayBuffer = await response.arrayBuffer();
+    const blob = new Blob([arrayBuffer], { type: `${mimeType}; charset=utf-8` });
+    const blobUrl = URL.createObjectURL(blob);
+    window.open(blobUrl, '_blank');
+  } catch (err) {
+    console.error('Грешка при отваряне на файла:', err);
+    // Fallback — отваряме директно
+    window.open(url, '_blank');
+  }
+}
