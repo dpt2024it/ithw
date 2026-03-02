@@ -88,9 +88,23 @@ export async function deleteSolution(id) {
 export async function uploadSolutionFile(file, userId, assignmentId) {
   const filePath = `${userId}/${assignmentId}/${file.name}`;
 
+  // Задаваме charset=utf-8 за текстови файлове (HTML, CSS, JS и др.),
+  // за да се показва кирилицата правилно при отваряне на файла.
+  const textTypes = {
+    'text/html': 'text/html; charset=utf-8',
+    'text/css': 'text/css; charset=utf-8',
+    'text/javascript': 'text/javascript; charset=utf-8',
+    'application/javascript': 'application/javascript; charset=utf-8',
+    'text/plain': 'text/plain; charset=utf-8',
+    'application/json': 'application/json; charset=utf-8',
+    'text/xml': 'text/xml; charset=utf-8',
+    'application/xml': 'application/xml; charset=utf-8',
+  };
+  const contentType = textTypes[file.type] || file.type || undefined;
+
   const { error } = await supabase.storage
     .from('solution-files')
-    .upload(filePath, file, { upsert: true });
+    .upload(filePath, file, { upsert: true, contentType });
 
   if (error) return { url: null, error };
 
